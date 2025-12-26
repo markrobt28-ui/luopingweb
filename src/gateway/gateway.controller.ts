@@ -182,8 +182,10 @@ export class GatewayController {
 
   // ==================== 博客文章 (公开) ====================
   @Get('posts')
-  getPosts() {
-    return this.postService.findPublished();
+  getPosts(@Query('page') page?: string, @Query('limit') limit?: string) {
+    const pageNum = page ? parseInt(page, 10) : 1;
+    const limitNum = limit ? parseInt(limit, 10) : 10;
+    return this.postService.findPublished(pageNum, limitNum);
   }
 
   @Get('posts/slug/:slug')
