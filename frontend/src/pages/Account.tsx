@@ -5,7 +5,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { authService, User } from '../services/authService';
 
 const Account = () => {
-  const { user: authUser, isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, logout } = useAuth();
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();

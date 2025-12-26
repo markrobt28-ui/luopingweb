@@ -13,7 +13,6 @@ interface User {
 export default function UserManagement() {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
-  const [editingUser, setEditingUser] = useState<User | null>(null);
 
   useEffect(() => {
     loadUsers();
@@ -37,7 +36,6 @@ export default function UserManagement() {
         body: JSON.stringify(updates),
       });
       await loadUsers();
-      setEditingUser(null);
     } catch (error: any) {
       alert('更新失败: ' + error.message);
     }
